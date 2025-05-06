@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const estudantesController = require("../controllers/estudantesController");
 const upload = require("../config/upload.js"); 
-// const apiKeyMiddleware = require("../config/apiKey"); 
+const apiKeyMiddleware = require("../config/apiKey"); 
 
-// router.use(apiKeyMiddleware);
+router.use(apiKeyMiddleware);
 
 router.get("/", estudantesController.getEstudantes);
 router.get("/:id", estudantesController.getEstudante);
