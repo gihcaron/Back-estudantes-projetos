@@ -35,7 +35,6 @@ const createEstudante = async (req, res) => {
         }
         res.status(500).json({ message: "Erro ao criar estudante." });
     }
-''
 };
 
 const updateEstudante = async (req, res) => {
@@ -49,8 +48,7 @@ const updateEstudante = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Erro ao atualizar Estudante." });
     }
-}
-
+};
 
 const  deleteEstudante = async (req, res) => {
     try {

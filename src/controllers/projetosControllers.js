@@ -34,7 +34,6 @@ const createProjeto = async (req, res) => {
         }
         res.status(500).json({ message: "Erro ao criar projeto." });
     }
-''
 };
 
 const updateProjeto = async (req, res) => {
@@ -48,7 +47,7 @@ const updateProjeto = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Erro ao atualizar projeto." });
     }
-}
+};
 
 const  deleteProjeto = async (req, res) => {
     try {

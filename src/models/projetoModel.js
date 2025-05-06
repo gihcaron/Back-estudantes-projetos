@@ -28,11 +28,11 @@ const createProjeto = async (nome, organizacao, descricao) => {
     return result.rows[0];
 };
 
-const updateProjeto = async ( nome, organizacao, descricao, id) => {
+const updateProjeto = async ( id, nome, organizacao, descricao, ) => {
     console.log("Dados recebidos para atualização:", { id, nome, organizacao, descricao });
     const result = await pool.query(
         "UPDATE projetos SET nome = $1, organizacao = $2, descricao = $3 WHERE id = $4 RETURNING *", 
-        [ nome, organizacao, descricao. id] 
+        [ nome, organizacao, descricao, id] 
     );
     return result.rows[0];
 };

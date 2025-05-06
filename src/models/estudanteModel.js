@@ -25,7 +25,7 @@ const getEstudanteById = async (id) => {
     return result.rows[0];
 };
 
-const createEstudante = async (nome, email, projetos_id) => {
+const createEstudante = async (nome, email, photo, projetos_id) => {
    try { 
     const result = await pool.query(
         "INSERT INTO estudantes (nome, email, photo, projetos_id) VALUES ($1, $2, $3, $4) RETURNING *",
