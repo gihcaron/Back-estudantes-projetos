@@ -39,7 +39,7 @@ const createProjeto = async (req, res) => {
 
 const updateProjeto = async (req, res) => {
     try {
-        const { nome, organizacao, descricao } = req.body;
+        const { nome, organizacao, descricao} = req.body;
         const updateprojeto = await projetoModel.updateProjeto(req.params.id, nome, organizacao, descricao);
         if (!updateprojeto) {
             return res.status(404).json({ message: "projeto não encontrado." });

@@ -25,7 +25,7 @@ const getEstudanteById = async (id) => {
     return result.rows[0];
 };
 
-const createEstudante = async (nome, email, photo, projetos_id) => {
+const createEstudante = async (nome, email, projetos_id) => {
    try { 
     const result = await pool.query(
         "INSERT INTO estudantes (nome, email, photo, projetos_id) VALUES ($1, $2, $3, $4) RETURNING *",
@@ -39,10 +39,10 @@ const createEstudante = async (nome, email, photo, projetos_id) => {
 
 };
 
-const updateEstudante = async ( nome, email, photo, projetos_id) => {
+const updateEstudante = async (id, nome, email, projetos_id) => {
     const result = await pool.query(
-        "UPDATE estudantes SET nome = $1, email = $2, photo = $3, projetos_id = $4 WHERE id = $5 RETURNING *", 
-        [nome, email, photo, projetos_id, id] 
+        "UPDATE estudantes SET nome = $1, email = $2, projetos_id = $3 WHERE id = $4 RETURNING *", 
+        [nome, email, projetos_id, id] 
     );
     return result.rows[0];
 };

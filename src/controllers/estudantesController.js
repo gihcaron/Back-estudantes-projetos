@@ -41,7 +41,7 @@ const createEstudante = async (req, res) => {
 const updateEstudante = async (req, res) => {
     try {
         const { nome, email, projetos_id } = req.body;
-        const updateEstudante = await estudanteModel.updateEstudante (req.params.id, nome, email, photo, projetos_id);
+        const updateEstudante = await estudanteModel.updateEstudante (req.params.id, nome, email, projetos_id);
         if (!updateEstudante) {
             return res.status(404).json({ message: "Estudante não encontrado." });
         }
