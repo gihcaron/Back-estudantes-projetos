@@ -25,28 +25,30 @@ const getEstudanteById = async (id) => {
     return result.rows[0];
 };
 
-const createEstudante = async (nome, organizacao, descricao) => {
-   try { const result = await pool.query(
-        "INSERT INTO estudantes (nome, organizacao, descricao) VALUES ($1, $2, $3) RETURNING *",
-        [nome, organizacao, descricao]
+const createEstudante = async (nome, email, photo, projetos_id) => {
+   try { 
+    const result = await pool.query(
+        "INSERT INTO estudantes (nome, email, photo, projetos_id) VALUES ($1, $2, $3, $4) RETURNING *",
+        [nome, email, photo, projetos_id]
     );
+    return result.rows[0];
 } catch (error) {
         console.error("Erro ao criar estudante:", error);
         throw error; 
     }
-    return result.rows[0];
+
 };
 
-const updateEstudante = async ( nome, organizacao, descricao, id) => {
+const updateEstudante = async ( nome, email, photo, projetos_id) => {
     const result = await pool.query(
-        "UPDATE estudantes SET nome = $1, organizacao = $2, descricao = $3 WHERE id = $4 RETURNING *", 
-        [nome, organizacao, descricao, id] 
+        "UPDATE estudantes SET nome = $1, email = $2, photo = $3, projetos_id = $4 WHERE id = $5 RETURNING *", 
+        [nome, email, photo, projetos_id, id] 
     );
     return result.rows[0];
 };
 
 const deleteEstudante = async (id) => { 
     await pool.query("DELETE FROM estudantes WHERE id = $1", [id]);
-    return { message: "estudante deletado com sucesso." };
+    return { message: "Estudante deletado com sucesso." };
 }
-module.exports = { getEstudantes, getEstudanteById, createEstudante, updateEstudante, deleteEstudante };
+module.exports = { getEstudantes, getEstudanteById, createEstudante, updateEstudante, deleteEstudante }; 

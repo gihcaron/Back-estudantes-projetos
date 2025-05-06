@@ -20,14 +20,11 @@ const getProjetoById = async (id) => {
 };
 
 const createProjeto = async (nome, organizacao, descricao) => {
-   try { const result = await pool.query(
+    const result = await pool.query(
         "INSERT INTO projetos (nome, organizacao, descricao) VALUES ($1, $2, $3) RETURNING *",
         [nome, organizacao, descricao]
     );
-} catch (error) {
-        console.error("Erro ao criar projeto:", error);
-        throw error; 
-    }
+
     return result.rows[0];
 };
 
